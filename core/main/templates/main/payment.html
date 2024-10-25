@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/payment.css' %}"/>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12 mb-4 card-display">
+            <div class="card">
+                <div class="img-box text-center">
+                    <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt="Visa Logo">
+                </div>
+                <div class="number">
+                    <label class="fw-bold">**** **** **** ****</label>
+                </div>
+                <div class="card-details">
+                    <small><span class="fw-bold">Expiry date:</span><span> 10/16</span></small>
+                    <small><span class="fw-bold">Name:</span><span>X</span></small>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-box text-center">
+                    <img src="https://www.freepnglogos.com/uploads/mastercard-png/file-mastercard-logo-svg-wikimedia-commons-4.png" alt="Mastercard Logo">
+                </div>
+                <div class="number">
+                    <label class="fw-bold">**** **** **** ****</label>
+                </div>
+                <div class="card-details">
+                    <small><span class="fw-bold">Expiry date:</span><span> 10/16</span></small>
+                    <small><span class="fw-bold">Name:</span><span>X</span></small>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-box text-center">
+                    <img src="https://www.freepnglogos.com/uploads/discover-png-logo/credit-cards-discover-png-logo-4.png" alt="Discover Logo">
+                </div>
+                <div class="number">
+                    <label class="fw-bold">**** **** **** ****</label>
+                </div>
+                <div class="card-details">
+                    <small><span class="fw-bold">Expiry date:</span><span> 10/16</span></small>
+                    <small><span class="fw-bold">Name:</span><span>X</span></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-4">
+            <div class="card p-3">
+                <p class="payment-methods-title">Payment Methods</p>
+            </div>
+        </div>
+        
+<div class="col-12 mb-3">
+    <div class="paypal-section">
+        <div class="paypal-icon">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="PayPal Logo">
+        </div>
+        <div class="paypal-details">
+            <h4>PayPal Payment</h4>
+            <p>Your PayPal payment summary is displayed below. Review your details before proceeding.</p>
+            <div class="summary">
+                <p><span class="fw-bold">Product:</span><span class="c-green"> Name of product</span></p>
+                <p><span class="fw-bold">Price:</span><span class="c-green">$ {{ summ }}</span></p>
+                <p><span class="fw-bold">Quantity:</span><span class="c-green">{{ quantity }}</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="col-12 mb-3">
+            <div class="card p-3">
+                <div class="card-body border p-0">
+                    <p class="credit-card-btn">
+                        <a class="btn btn-primary w-100 d-flex align-items-center justify-content-between"
+                           data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="true"
+                           aria-controls="collapseExample2">
+                            <span class="fw-bold">Credit Card</span>
+                            <span class="d-flex align-items-center">
+                                <span class="fab fa-cc-amex"></span>
+                                <span class="fab fa-cc-mastercard mx-3"></span> <!-- Added margin for spacing -->
+                                <span class="fab fa-cc-discover"></span>
+                            </span>
+                        </a>
+                    </p>
+                    <div class="collapse show p-3 pt-0" id="collapseExample2">
+                        <div class="row">
+                            <div class="col-lg-5 mb-lg-0 mb-3">
+                                <p class="h4 mb-0">Summary:</p>
+                                <p class="mb-0"><span class="fw-bold">Total Price:</span><span class="c-green">$ {{ summ }}</span></p>
+                                <p class="mb-0"><span class="fw-bold">Quantity of Items:</span><span class="c-green">{{ quantity }}</span></p>
+                            </div>
+                            <div class="col-lg-7">
+                                <form action="" class="form">
+                                    {% csrf_token %}
+                                    <div class="payment-form">
+                                        <h2>Credit Card</h2>
+                                        <div class="summary">
+                                            <p>Total Price: <span class="total-price">$14510.50</span></p>
+                                            <p>Quantity of Items: <span class="item-quantity">19</span></p>
+                                        </div>
+                                        <div class="form__div">
+                                            <input type="text" class="form-control" required>
+                                            <label for="name" class="form__label">Name on the Card</label>
+                                        </div>
+                                        <div class="form__div">
+                                            <input type="text" class="form-control" required>
+                                            <label for="card-number" class="form__label">Card Number</label>
+                                        </div>
+                                        <div class="form__div">
+                                            <input type="text" class="form-control" required>
+                                            <label for="expiry" class="form__label">MM/YY</label>
+                                        </div>
+                                        <div class="form__div">
+                                            <input type="text" class="form-control" required>
+                                            <label for="cvv" class="form__label">CVV/CVC Code</label>
+                                        </div>
+                                        <button type="submit" class="submit-btn">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="btn btn-primary payment">
+                Make Payment
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,456 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-28 20:08+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\core\settings.py:218
+msgid "Armenian"
+msgstr "Armenian"
+
+#: .\core\settings.py:219
+msgid "Russia"
+msgstr "Russia"
+
+#: .\core\settings.py:220
+msgid "English"
+msgstr "English"
+
+#: .\main\apps.py:12
+msgid "cookie consent"
+msgstr "cookie consent"
+
+#: .\main\models.py:229
+msgid ""
+"Enter a valid 'varname' consisting of letters, numbers, underscores or "
+"hyphens."
+msgstr "Enter a valid 'varname' consisting of letters, numbers, underscores or hyphens."
+
+#: .\main\models.py:274
+msgid "Variable name"
+msgstr "Variable name"
+
+#: .\main\models.py:279 .\main\models.py:343
+msgid "Name"
+msgstr "Name"
+
+#: .\main\models.py:280 .\main\models.py:344
+msgid "Description"
+msgstr "Description"
+
+#: .\main\models.py:282
+msgid "Is required"
+msgstr "Is required"
+
+#: .\main\models.py:283
+msgid "Are cookies in this group required."
+msgstr "Are cookies in this group required."
+
+#: .\main\models.py:287
+msgid "Is deletable?"
+msgstr "Is deletable?"
+
+#: .\main\models.py:288
+msgid "Can cookies in this group be deleted."
+msgstr "Can cookies in this group be deleted."
+
+#: .\main\models.py:291
+msgid "Ordering"
+msgstr "Ordering"
+
+#: .\main\models.py:292 .\main\models.py:347 .\main\models.py:401
+msgid "Created"
+msgstr "Created"
+
+#: .\main\models.py:297
+msgid "Cookie Group"
+msgstr "Cookie Group"
+
+#: .\main\models.py:298
+msgid "Cookie Groups"
+msgstr "Cookie Groups"
+
+#: .\main\models.py:345
+msgid "Path"
+msgstr "Path"
+
+#: .\main\models.py:346
+msgid "Domain"
+msgstr "Domain"
+
+#: .\main\models.py:352
+msgid "Cookie"
+msgstr "Cookie"
+
+#: .\main\models.py:353
+msgid "Cookies"
+msgstr "Cookies"
+
+#: .\main\models.py:388 .\main\templates\cookie_consent\_cookie_group.html:24
+msgid "Declined"
+msgstr "Declined"
+
+#: .\main\models.py:389 .\main\templates\cookie_consent\_cookie_group.html:15
+msgid "Accepted"
+msgstr "Accepted"
+
+#: .\main\models.py:394 .\main\templates\main\cart.html:17
+msgid "Action"
+msgstr "Action"
+
+#: .\main\models.py:400
+msgid "Version"
+msgstr "Version"
+
+#: .\main\models.py:407
+msgid "Log item"
+msgstr "Log item"
+
+#: .\main\models.py:408
+msgid "Log items"
+msgstr "Log items"
+
+#: .\main\templates\cookie_consent\_cookie_group.html:19
+msgid "Accept"
+msgstr "Accept"
+
+#: .\main\templates\cookie_consent\_cookie_group.html:28
+msgid "Decline"
+msgstr "Decline"
+
+#: .\main\templates\main\accessory.html:79
+msgid "Add to Cart"
+msgstr "Add to Cart"
+
+#: .\main\templates\main\all_accessories.html:15
+#: .\main\templates\main\all_products.html:17
+#: .\main\templates\main\checkout.html:16
+msgid "Home"
+msgstr "Home"
+
+#: .\main\templates\main\all_accessories.html:48
+#: .\main\templates\main\all_products.html:87
+msgid "About Product"
+msgstr "About Product"
+
+#: .\main\templates\main\all_accessories.html:51
+#: .\main\templates\main\all_products.html:90
+msgid "Add to Wishlist"
+msgstr "Add to Wishlist"
+
+#: .\main\templates\main\all_accessories.html:55
+#: .\main\templates\main\all_products.html:94
+msgid "Category"
+msgstr "Category"
+
+#: .\main\templates\main\all_accessories.html:60
+#: .\main\templates\main\all_products.html:99
+msgid "Share"
+msgstr "Share"
+
+#: .\main\templates\main\all_products.html:63
+msgid "Product Thumbnail"
+msgstr "Product Thumbnail"
+
+#: .\main\templates\main\all_products.html:83
+msgid "In Stock"
+msgstr "In Stock"
+
+#: .\main\templates\main\cart.html:6
+msgid "Your Shopping Cart"
+msgstr "Your Shopping Cart"
+
+#: .\main\templates\main\cart.html:12
+msgid "Product"
+msgstr "Product"
+
+#: .\main\templates\main\cart.html:13
+msgid "Image"
+msgstr "Image"
+
+#: .\main\templates\main\cart.html:14
+msgid "Quantity"
+msgstr "Quantity"
+
+#: .\main\templates\main\cart.html:15
+msgid "Price"
+msgstr "Price"
+
+#: .\main\templates\main\cart.html:16
+msgid "Total"
+msgstr "Total"
+
+#: .\main\templates\main\cart.html:42
+msgid "Decrease Quantity"
+msgstr "Decrease Quantity"
+
+#: .\main\templates\main\cart.html:48
+msgid "Increase Quantity"
+msgstr "Increase Quantity"
+
+#: .\main\templates\main\cart.html:64
+msgid "Delete"
+msgstr "Delete"
+
+#: .\main\templates\main\cart.html:73
+msgid "Total Quantity"
+msgstr "Total Quantity"
+
+#: .\main\templates\main\cart.html:74
+msgid "Total Amount"
+msgstr "Total Amount"
+
+#: .\main\templates\main\cart.html:75
+msgid "Add new product"
+msgstr "Add new product"
+
+#: .\main\templates\main\cart.html:76
+msgid "Proceed to Checkout"
+msgstr "Proceed to Checkout"
+
+#: .\main\templates\main\cart.html:77
+msgid "Pay Now!"
+msgstr "Pay Now!"
+
+#: .\main\templates\main\cart.html:79 .\main\templates\main\cart.html:84
+msgid "Your cart is empty."
+msgstr "Your cart is empty."
+
+#: .\main\templates\main\cart.html:80 .\main\templates\main\cart.html:85
+msgid "Go to Home"
+msgstr "Go to Home"
+
+#: .\main\templates\main\checkout.html:14
+#: .\main\templates\main\checkout.html:17
+msgid "Checkout"
+msgstr "Checkout"
+
+#: .\main\templates\main\checkout.html:38
+msgid "Billing address"
+msgstr "Billing address"
+
+#: .\main\templates\main\checkout.html:41
+#: .\main\templates\main\checkout.html:94
+msgid "First Name"
+msgstr "First Name"
+
+#: .\main\templates\main\checkout.html:44
+#: .\main\templates\main\checkout.html:97
+msgid "Last Name"
+msgstr "Last Name"
+
+#: .\main\templates\main\checkout.html:47
+#: .\main\templates\main\checkout.html:100
+msgid "Email"
+msgstr "Email"
+
+#: .\main\templates\main\checkout.html:50
+#: .\main\templates\main\checkout.html:103
+msgid "Address"
+msgstr "Address"
+
+#: .\main\templates\main\checkout.html:53
+#: .\main\templates\main\checkout.html:106
+msgid "City"
+msgstr "City"
+
+#: .\main\templates\main\checkout.html:56
+#: .\main\templates\main\checkout.html:109
+msgid "Country"
+msgstr "Country"
+
+#: .\main\templates\main\checkout.html:59
+#: .\main\templates\main\checkout.html:112
+msgid "ZIP Code"
+msgstr "ZIP Code"
+
+#: .\main\templates\main\checkout.html:62
+#: .\main\templates\main\checkout.html:115
+msgid "Telephone"
+msgstr "Telephone"
+
+#: .\main\templates\main\checkout.html:69
+msgid "Create Account?"
+msgstr "Create Account?"
+
+#: .\main\templates\main\checkout.html:72
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
+
+#: .\main\templates\main\checkout.html:73
+msgid "Enter Your Password"
+msgstr "Enter Your Password"
+
+#: .\main\templates\main\checkout.html:83
+msgid "Shipping address"
+msgstr "Shipping address"
+
+#: .\main\templates\main\checkout.html:89
+msgid "Ship to a different address?"
+msgstr "Ship to a different address?"
+
+#: .\main\templates\main\checkout.html:124
+msgid "Order Notes"
+msgstr "Order Notes"
+
+#: .\main\templates\main\checkout.html:132
+msgid "Your Order"
+msgstr "Your Order"
+
+#: .\main\templates\main\checkout.html:136
+#: .\main\templates\main\checkout.html:145
+msgid "PRODUCT QUANTITY"
+msgstr "PRODUCT QUANTITY"
+
+#: .\main\templates\main\checkout.html:137
+#: .\main\templates\main\checkout.html:154
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#: .\main\templates\main\checkout.html:150
+msgid "Shipping"
+msgstr "Shipping"
+
+#: .\main\templates\main\checkout.html:151
+msgid "FREE"
+msgstr "FREE"
+
+#: .\main\templates\main\checkout.html:163
+msgid "Direct Bank Transfer"
+msgstr "Direct Bank Transfer"
+
+#: .\main\templates\main\checkout.html:166
+#: .\main\templates\main\checkout.html:176
+#: .\main\templates\main\checkout.html:186
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt ut labore et dolore magna aliqua."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+#: .\main\templates\main\checkout.html:173
+msgid "Cheque Payment"
+msgstr "Cheque Payment"
+
+#: .\main\templates\main\checkout.html:183
+msgid "Paypal System"
+msgstr "Paypal System"
+
+#: .\main\templates\main\checkout.html:194
+msgid "I\\"
+msgstr "I\\"
+
+#: .\main\templates\main\checkout.html:194
+msgid "terms & conditions"
+msgstr "terms & conditions"
+
+#: .\main\templates\main\checkout.html:197
+msgid "Place order"
+msgstr "Place order"
+
+#: .\main\templates\main\cookie_modal.html:7
+msgid "We value your privacy"
+msgstr "We value your privacy"
+
+#: .\main\templates\main\cookie_modal.html:10
+msgid ""
+"We use cookies on this website to enhance your user experience. By clicking "
+"\"I agree\", you are giving your consent for us to set cookies."
+msgstr "We use cookies on this website to enhance your user experience. By clicking \"I agree\", you are giving your consent for us to set cookies."
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid ""
+"For more information on what data is contained in the cookies, please see our"
+msgstr "For more information on what data is contained in the cookies, please see our"
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid "page."
+msgstr "page."
+
+#: .\main\templates\main\cookie_modal.html:14
+msgid "I decline"
+msgstr "I decline"
+
+#: .\main\templates\main\cookie_modal.html:15
+msgid "I agree"
+msgstr "I agree"
+
+#: .\main\templates\main\index.html:64 .\main\templates\main\index.html:300
+msgid "Shop now"
+msgstr "Shop now"
+
+#: .\main\templates\main\index.html:81 .\main\templates\main\index.html:227
+msgid "New Products"
+msgstr "New Products"
+
+#: .\main\templates\main\index.html:85 .\main\templates\main\index.html:384
+msgid "All Products"
+msgstr "All Products"
+
+#: .\main\templates\main\index.html:109 .\main\templates\main\index.html:166
+#, python-format
+msgid " %%"
+msgstr " %%"
+
+#: .\main\templates\main\index.html:130 .\main\templates\main\index.html:187
+msgid "Add to wishlist"
+msgstr "Add to wishlist"
+
+#: .\main\templates\main\index.html:136 .\main\templates\main\index.html:193
+msgid "Quick view"
+msgstr "Quick view"
+
+#: .\main\templates\main\index.html:146 .\main\templates\main\index.html:203
+msgid "Add to cart"
+msgstr "Add to cart"
+
+#: .\main\templates\main\index.html:276
+msgid "Days"
+msgstr "Days"
+
+#: .\main\templates\main\index.html:282
+msgid "Hours"
+msgstr "Hours"
+
+#: .\main\templates\main\index.html:288
+msgid "Min"
+msgstr "Min"
+
+#: .\main\templates\main\index.html:294
+msgid "Sec"
+msgstr "Sec"
+
+#: .\main\templates\main\index.html:380 .\main\templates\main\index.html:522
+msgid "Top Selling"
+msgstr "Top Selling"
+
+#: .\main\templates\main\index.html:429 .\main\templates\main\index.html:486
+msgid "add to wishlist"
+msgstr "add to wishlist"
+
+#: .\main\templates\main\index.html:435 .\main\templates\main\index.html:492
+msgid "quick view"
+msgstr "quick view"
+
+#: .\main\templates\main\index.html:445 .\main\templates\main\index.html:502
+#: .\main\templates\main\product.html:96
+msgid "add to cart"
+msgstr "add to cart"

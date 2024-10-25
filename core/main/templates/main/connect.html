@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Your Account</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Connect Your Account</h2>
+    <p>You are about to connect your Google account.</p>
+    <p>
+        <a href="{% provider_login_url 'google' %}?next={{ request.GET.next }}" class="btn btn-primary">Connect</a>
+    </p>
+    <p class="back_to_login"><a href="{% url 'login' %}">Back to Login</a></p>
+</div>
+
+</body>
+</html>

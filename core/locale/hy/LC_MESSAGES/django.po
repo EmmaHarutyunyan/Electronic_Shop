@@ -1,0 +1,464 @@
+# Armenian Translation
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-28 20:10+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Armenian <LL@li.org>\n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\core\settings.py:218
+msgid "Armenian"
+msgstr "Հայերեն"
+
+#: .\core\settings.py:219
+msgid "Russia"
+msgstr "Ռուսաստան"
+
+#: .\core\settings.py:220
+msgid "English"
+msgstr "Անգլերեն"
+
+#: .\main\apps.py:12
+msgid "cookie consent"
+msgstr "խմելու համաձայնություն"
+
+#: .\main\models.py:229
+msgid ""
+"Enter a valid 'varname' consisting of letters, numbers, underscores or "
+"hyphens."
+msgstr ""
+"Մուտքագրեք վավեր 'varname', որը բաղկացած է նամակներից, թվերից, գծիկներից կամ "
+"հատուկ նշաններից։"
+
+#: .\main\models.py:274
+msgid "Variable name"
+msgstr "Փոփոխական անուն"
+
+#: .\main\models.py:279 .\main\models.py:343
+msgid "Name"
+msgstr "Անուն"
+
+#: .\main\models.py:280 .\main\models.py:344
+msgid "Description"
+msgstr "Նկարագրություն"
+
+#: .\main\models.py:282
+msgid "Is required"
+msgstr "Պահանջվում է"
+
+#: .\main\models.py:283
+msgid "Are cookies in this group required."
+msgstr "Այս խմբի կուքիերը պահանջվում են։"
+
+#: .\main\models.py:287
+msgid "Is deletable?"
+msgstr "Կարո՞ղ է հեռացվել։"
+
+#: .\main\models.py:288
+msgid "Can cookies in this group be deleted."
+msgstr "Կարո՞ղ են այս խմբի կուքիերը հեռացվել։"
+
+#: .\main\models.py:291
+msgid "Ordering"
+msgstr "Պատվիրում"
+
+#: .\main\models.py:292 .\main\models.py:347 .\main\models.py:401
+msgid "Created"
+msgstr "Ստեղծված"
+
+#: .\main\models.py:297
+msgid "Cookie Group"
+msgstr "Կուքիերի խումբ"
+
+#: .\main\models.py:298
+msgid "Cookie Groups"
+msgstr "Կուքիերի խմբեր"
+
+#: .\main\models.py:345
+msgid "Path"
+msgstr "Ճանապարհ"
+
+#: .\main\models.py:346
+msgid "Domain"
+msgstr "Դոմեն"
+
+#: .\main\models.py:352
+msgid "Cookie"
+msgstr "Կուքի"
+
+#: .\main\models.py:353
+msgid "Cookies"
+msgstr "Կուքիեր"
+
+#: .\main\models.py:388 .\main\templates\cookie_consent\_cookie_group.html:24
+msgid "Declined"
+msgstr "Մերժված"
+
+#: .\main\models.py:389 .\main\templates\cookie_consent\_cookie_group.html:15
+msgid "Accepted"
+msgstr "Ընդունված"
+
+#: .\main\models.py:394 .\main\templates\main\cart.html:17
+msgid "Action"
+msgstr "Գործողություն"
+
+#: .\main\models.py:400
+msgid "Version"
+msgstr "Տարբերակ"
+
+#: .\main\models.py:407
+msgid "Log item"
+msgstr "Լոգի իր"
+
+#: .\main\models.py:408
+msgid "Log items"
+msgstr "Լոգի իրեր"
+
+#: .\main\templates\cookie_consent\_cookie_group.html:19
+msgid "Accept"
+msgstr "Ընդունել"
+
+#: .\main\templates\cookie_consent\_cookie_group.html:28
+msgid "Decline"
+msgstr "Մերժել"
+
+#: .\main\templates\main\accessory.html:79
+msgid "Add to Cart"
+msgstr "Ավելացնել զամբյուղ"
+
+#: .\main\templates\main\all_accessories.html:15
+#: .\main\templates\main\all_products.html:17
+#: .\main\templates\main\checkout.html:16
+msgid "Home"
+msgstr "Գլխավոր"
+
+#: .\main\templates\main\all_accessories.html:48
+#: .\main\templates\main\all_products.html:87
+msgid "About Product"
+msgstr "Ամփոփում արտադրանքի մասին"
+
+#: .\main\templates\main\all_accessories.html:51
+#: .\main\templates\main\all_products.html:90
+msgid "Add to Wishlist"
+msgstr "Ավելացնել ցանկություններին"
+
+#: .\main\templates\main\all_accessories.html:55
+#: .\main\templates\main\all_products.html:94
+msgid "Category"
+msgstr "Կատեգորիա"
+
+#: .\main\templates\main\all_accessories.html:60
+#: .\main\templates\main\all_products.html:99
+msgid "Share"
+msgstr "Կիսվել"
+
+#: .\main\templates\main\all_products.html:63
+msgid "Product Thumbnail"
+msgstr "Ապրանքի պատկեր"
+
+#: .\main\templates\main\all_products.html:83
+msgid "In Stock"
+msgstr "Առկա է"
+
+#: .\main\templates\main\cart.html:6
+msgid "Your Shopping Cart"
+msgstr "Ձեր զամբյուղը"
+
+#: .\main\templates\main\cart.html:12
+msgid "Product"
+msgstr "Ապրանք"
+
+#: .\main\templates\main\cart.html:13
+msgid "Image"
+msgstr "Պատկեր"
+
+#: .\main\templates\main\cart.html:14
+msgid "Quantity"
+msgstr "Քանակ"
+
+#: .\main\templates\main\cart.html:15
+msgid "Price"
+msgstr "Գին"
+
+#: .\main\templates\main\cart.html:16
+msgid "Total"
+msgstr "Ընդհանուր"
+
+#: .\main\templates\main\cart.html:42
+msgid "Decrease Quantity"
+msgstr "Փոքրացնել քանակը"
+
+#: .\main\templates\main\cart.html:48
+msgid "Increase Quantity"
+msgstr "Ավելացնել քանակը"
+
+#: .\main\templates\main\cart.html:64
+msgid "Delete"
+msgstr "Հեռացնել"
+
+#: .\main\templates\main\cart.html:73
+msgid "Total Quantity"
+msgstr "Ընդհանուր քանակ"
+
+#: .\main\templates\main\cart.html:74
+msgid "Total Amount"
+msgstr "Ընդհանուր գումար"
+
+#: .\main\templates\main\cart.html:75
+msgid "Add new product"
+msgstr "Ավելացնել նոր ապրանք"
+
+#: .\main\templates\main\cart.html:76
+msgid "Proceed to Checkout"
+msgstr "Շարժվել վճարելու"
+
+#: .\main\templates\main\cart.html:77
+msgid "Pay Now!"
+msgstr "Վճարել հիմա!"
+
+#: .\main\templates\main\cart.html:79 .\main\templates\main\cart.html:84
+msgid "Your cart is empty."
+msgstr "Ձեր զամբյուղը դատարկ է։"
+
+#: .\main\templates\main\cart.html:80 .\main\templates\main\cart.html:85
+msgid "Go to Home"
+msgstr "Գնալ Գլխավոր էջ"
+
+#: .\main\templates\main\checkout.html:14
+#: .\main\templates\main\checkout.html:17
+msgid "Checkout"
+msgstr "Վճարում"
+
+#: .\main\templates\main\checkout.html:38
+msgid "Billing address"
+msgstr "Վճարման հասցե"
+
+#: .\main\templates\main\checkout.html:41
+#: .\main\templates\main\checkout.html:94
+msgid "First Name"
+msgstr "Առաջին անուն"
+
+#: .\main\templates\main\checkout.html:44
+#: .\main\templates\main\checkout.html:97
+msgid "Last Name"
+msgstr "Վերջին անուն"
+
+#: .\main\templates\main\checkout.html:47
+#: .\main\templates\main\checkout.html:100
+msgid "Email"
+msgstr "Էլ. փոստ"
+
+#: .\main\templates\main\checkout.html:50
+#: .\main\templates\main\checkout.html:103
+msgid "Address"
+msgstr "Հասցե"
+
+#: .\main\templates\main\checkout.html:53
+#: .\main\templates\main\checkout.html:106
+msgid "City"
+msgstr "Քաղաք"
+
+#: .\main\templates\main\checkout.html:56
+#: .\main\templates\main\checkout.html:109
+msgid "Country"
+msgstr "Երկիր"
+
+#: .\main\templates\main\checkout.html:59
+#: .\main\templates\main\checkout.html:112
+msgid "ZIP Code"
+msgstr "Փոստային կոդ"
+
+#: .\main\templates\main\checkout.html:62
+#: .\main\templates\main\checkout.html:115
+msgid "Telephone"
+msgstr "Հեռախոս"
+
+#: .\main\templates\main\checkout.html:69
+msgid "Create Account?"
+msgstr "Ստեղծե՞լ հաշիվ։"
+
+#: .\main\templates\main\checkout.html:72
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt."
+msgstr ""
+"Ձեր գաղտնիությունն ենք կարևորում: Համոզվեք, որ մեր քաղաքականությունը համապատասխան է։"
+
+#: .\main\templates\main\checkout.html:73
+msgid "Enter Your Password"
+msgstr "Մուտքագրեք Ձեր գաղտնաբառը"
+
+#: .\main\templates\main\checkout.html:83
+msgid "Shipping address"
+msgstr "Առաքման հասցե"
+
+#: .\main\templates\main\checkout.html:89
+msgid "Ship to a different address?"
+msgstr "Առաքե՞լ այլ հասցեով։"
+
+#: .\main\templates\main\checkout.html:124
+msgid "Order Notes"
+msgstr "Պատվերի նկատումներ"
+
+#: .\main\templates\main\checkout.html:132
+msgid "Your Order"
+msgstr "Ձեր պատվերը"
+
+#: .\main\templates\main\checkout.html:136
+#: .\main\templates\main\checkout.html:145
+msgid "PRODUCT QUANTITY"
+msgstr "ԱՊՐԱՆՔԻ ՔԱՆԱԿԸ"
+
+#: .\main\templates\main\checkout.html:137
+#: .\main\templates\main\checkout.html:154
+msgid "TOTAL"
+msgstr "ԸՆՏԵՐՈՒՄ"
+
+#: .\main\templates\main\checkout.html:150
+msgid "Shipping"
+msgstr "Առաքում"
+
+#: .\main\templates\main\checkout.html:151
+msgid "FREE"
+msgstr "ԱՌԱՋԱՐԿ"
+
+#: .\main\templates\main\checkout.html:163
+msgid "Direct Bank Transfer"
+msgstr "Բանկային փոխանցում"
+
+#: .\main\templates\main\checkout.html:166
+#: .\main\templates\main\checkout.html:176
+#: .\main\templates\main\checkout.html:186
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt ut labore et dolore magna aliqua."
+msgstr ""
+"Ձեր գաղտնիությունն ենք կարևորում: Համոզվեք, որ մեր քաղաքականությունը համապատասխան է։"
+
+#: .\main\templates\main\checkout.html:173
+msgid "Cheque Payment"
+msgstr "Չեկային վճարում"
+
+#: .\main\templates\main\checkout.html:183
+msgid "Paypal System"
+msgstr "PayPal համակարգ"
+
+#: .\main\templates\main\checkout.html:194
+msgid "I\\"
+msgstr "Ես\\"
+
+#: .\main\templates\main\checkout.html:194
+msgid "terms & conditions"
+msgstr "պայմաններ և կանոններ"
+
+#: .\main\templates\main\checkout.html:197
+msgid "Place order"
+msgstr "Պատվիրել"
+
+#: .\main\templates\main\cookie_modal.html:7
+msgid "We value your privacy"
+msgstr "Մենք կարևորում ենք ձեր գաղտնիությունը"
+
+#: .\main\templates\main\cookie_modal.html:10
+msgid ""
+"We use cookies on this website to enhance your user experience. By clicking "
+"\"I agree\", you are giving your consent for us to set cookies."
+msgstr ""
+"Մենք օգտագործում ենք կուքիեր այս կայքում ձեր օգտագործող փորձը բարելավելու համար։ "
+"Սեղմելով \"Այո\", դուք համաձայնում եք մեր կողմից կուքիերի տեղադրմանը։"
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid ""
+"For more information on what data is contained in the cookies, please see our"
+msgstr ""
+"Հավելյալ տեղեկությունների համար, թե ինչ տվյալներ են կուքիերում, խնդրում ենք տեսնել մեր"
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid "Privacy Policy"
+msgstr "Գաղտնիության քաղաքականություն"
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid "page."
+msgstr "էջը։"
+
+#: .\main\templates\main\cookie_modal.html:14
+msgid "I decline"
+msgstr "Ես մերժում եմ"
+
+#: .\main\templates\main\cookie_modal.html:15
+msgid "I agree"
+msgstr "Ես համաձայն եմ"
+
+#: .\main\templates\main\index.html:64 .\main\templates\main\index.html:300
+msgid "Shop now"
+msgstr "Գնել հիմա"
+
+#: .\main\templates\main\index.html:81 .\main\templates\main\index.html:227
+msgid "New Products"
+msgstr "Նոր արտադրանքներ"
+
+#: .\main\templates\main\index.html:85 .\main\templates\main\index.html:384
+msgid "All Products"
+msgstr "Բոլոր արտադրանքները"
+
+#: .\main\templates\main\index.html:109 .\main\templates\main\index.html:166
+#, python-format
+msgid " %%"
+msgstr " %%"
+
+#: .\main\templates\main\index.html:130 .\main\templates\main\index.html:187
+msgid "Add to wishlist"
+msgstr "Ավելացնել ցանկությանը"
+
+#: .\main\templates\main\index.html:136 .\main\templates\main\index.html:193
+msgid "Quick view"
+msgstr "Արագ դիտում"
+
+#: .\main\templates\main\index.html:146 .\main\templates\main\index.html:203
+msgid "Add to cart"
+msgstr "Ավելացնել զամբյուղ"
+
+#: .\main\templates\main\index.html:276
+msgid "Days"
+msgstr "Օրեր"
+
+#: .\main\templates\main\index.html:282
+msgid "Hours"
+msgstr "Ժամեր"
+
+#: .\main\templates\main\index.html:288
+msgid "Min"
+msgstr "Նվազագույն"
+
+#: .\main\templates\main\index.html:294
+msgid "Sec"
+msgstr "Վարկյան"
+
+#: .\main\templates\main\index.html:380 .\main\templates\main\index.html:522
+msgid "Top Selling"
+msgstr "Առավել վաճառվող"
+
+#: .\main\templates\main\index.html:429 .\main\templates\main\index.html:486
+msgid "add to wishlist"
+msgstr "ավելացնել ցանկությանը"
+
+#: .\main\templates\main\index.html:435 .\main\templates\main\index.html:492
+msgid "quick view"
+msgstr "արագ դիտում"
+
+#: .\main\templates\main\index.html:445 .\main\templates\main\index.html:502
+#: .\main\templates\main\product.html:96
+msgid "add to cart"
+msgstr "ավելացնել զամբյուղ"

@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<div class="image-section">
+    {% for image in store_images %}
+    <img src="{{ image.image.url }}" alt="{{ image.image_title }}">
+    {% endfor %}
+</div>
+
+<div id="aside" class="col-md-3">
+    <div class="aside">
+        <h3 class="aside-title">Price</h3>
+        <div class="price-filter">
+            <form id="price-filter-form">
+                <div class="input-group">
+                    <input type="number" id="minPrice" name="min_price" class="form-control" placeholder="Min">
+                    <input type="number" id="maxPrice" name="max_price" class="form-control" placeholder="Max">
+                    <button type="button" id="clearPriceFilter" class="btn btn-secondary">Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="aside">
+        <h3 class="aside-title">Brand</h3>
+        <div class="brand-filter">
+            <form id="brand-filter-form">
+                <select id="brandFilter" name="brand" class="form-control">
+                    <option value="">Select Brand</option>
+                    {% for brand in brands %}
+                    <option value="{{ brand }}" {% if brand == brand_id %}selected{% endif %}>{{ brand }}</option>
+                    {% endfor %}
+                </select>
+                <button type="button" id="clearBrandFilter" class="btn btn-secondary">Clear</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="aside">
+        <h3 class="aside-title">Product Name</h3>
+        <div class="checkbox-filter">
+            <form id="product-name-filter-form">
+                <input type="text" id="productName" name="product_name" class="form-control" placeholder="Search by Product Name">
+                <button type="button" id="clearProductNameFilter" class="btn btn-secondary">Clear</button>
+            </form>
+        </div>
+    </div>
+
+       <div class="color-options">
+        <h3>Available Colors:</h3>
+        <ul class="color-list" id="colorFilterList">
+            {% if colors %}
+                {% for color in colors %}
+                    <li class="color-item">
+                        <a href="#"
+                           class="color-swatch"
+                           data-color="{{ color.color_code }}"
+                           title="{{ color.color_name }}">
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>No color options available.</li>
+            {% endif %}
+        </ul>
+        <button type="button" id="clearColorFilter" class="btn btn-secondary">Clear Color Filter</button>
+    </div>
+</div>
+
+<div class="col-md-9">
+    <div class="row">
+        <div class="products-grid row" id="productList">
+            {% for product in products %}
+            <div class="col-md-4 col-xs-6 product-item" data-category="{{ product.category.id }}" data-price="{{ product.new_price }}" data-brand="{{ product.brand }}" data-color="{% if product.colors.exists %}{{ product.colors.first.color_code }}{% endif %}">
+                <div class="product">
+                    <div class="product-img">
+                        <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}">
+                        <div class="product-label">
+                            {% if product.discount %}
+                            <span class="sale">{{ product.discount }} {% trans ' %' %}</span>
+                            {% endif %}
+                            {% if product.status == 'New' %}
+                            <span class="new">{{ product.status }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-category">{{ product.category.category_name }}</p>
+                        <h3 class="product-name"><a href="#">{{ product.pr_name }}</a></h3>
+                        <p class="product-brand">{{ product.brand }}</p> <!-- Brand info added here -->
+                        <h4 class="product-price">${{ product.new_price }} <del class="product-old-price">${{ product.old_price }}</del></h4>
+                        <div class="product-rating">
+                            {% for i in product.rating %}
+                            <i class="fa fa-star"></i>
+                            {% endfor %}
+                        </div>
+                        <div class="product-btns">
+                            <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="add-to-wishlist" style="color: inherit; background-color: transparent; border: none;">
+                                    <i class="fa fa-heart-o"></i><span class="tooltipp">{% trans 'Add to wishlist' %}</span>
+                                </button>
+                            </form>
+                            <button class="quick-view">
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <i class="fa fa-eye"></i>
+                                    <span class="tooltipp">{% trans 'Quick view' %}</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="add-to-cart">
+                        <a href="{% url 'product_detail' product.id %}" class="add-to-cart-btn">
+                            <i class="fa fa-shopping-cart"></i> {% trans 'Add to cart' %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="store-filter clearfix">
+        <span class="store-qty">Showing {{ products.paginator.per_page }} products per page</span>
+        <ul class="store-pagination">
+            {% if products.has_previous %}
+            <li><a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}{% if brand_id %}&brand={{ brand_id }}{% endif %}">First</a></li>
+            <li><a href="?page={{ products.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}{% if brand_id %}&brand={{ brand_id }}{% endif %}"><i class="fa fa-angle-left"></i></a></li>
+            {% endif %}
+
+            {% for num in products.paginator.page_range %}
+                {% if products.number == num %}
+                <li class="active">{{ num }}</li>
+                {% else %}
+                <li><a href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}{% if brand_id %}&brand={{ brand_id }}{% endif %}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if products.has_next %}
+            <li><a href="?page={{ products.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}{% if brand_id %}&brand={{ brand_id }}{% endif %}"><i class="fa fa-angle-right"></i></a></li>
+            <li><a href="?page={{ products.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if category_id %}&category={{ category_id }}{% endif %}{% if brand_id %}&brand={{ brand_id }}{% endif %}">Last</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+<script>
+$(document).ready(function() {
+    function filterProducts() {
+        var selectedCategories = [];
+        var selectedBrands = $('#brandFilter').val();
+        var minPrice = parseFloat($('#minPrice').val()) || 0;
+        var maxPrice = parseFloat($('#maxPrice').val()) || Infinity;
+        var productName = $('#productName').val().toLowerCase();
+        var selectedColors = [];
+
+        $('.color-swatch.selected').each(function() {
+            selectedColors.push($(this).data('color'));
+        });
+
+        $('.category-filter:checked').each(function() {
+            selectedCategories.push($(this).val());
+        });
+
+        $('#productList .product-item').each(function() {
+            var category = $(this).data('category');
+            var price = parseFloat($(this).data('price'));
+            var brand = $(this).data('brand');
+            var color = $(this).data('color');
+            var productNameInItem = $(this).find('.product-name a').text().toLowerCase();
+
+            var categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category.toString());
+            var priceMatch = price >= minPrice && price <= maxPrice;
+            var brandMatch = !selectedBrands || selectedBrands === brand;
+            var productNameMatch = productName === '' || productNameInItem.includes(productName);
+            var colorMatch = selectedColors.length === 0 || selectedColors.includes(color);
+
+            if (categoryMatch && priceMatch && brandMatch && productNameMatch && colorMatch) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    $('#price-filter-form, #product-name-filter-form').on('change keyup submit', function(e) {
+        e.preventDefault();
+        filterProducts();
+    });
+
+    $('#brandFilter').on('change', function() {
+        filterProducts();
+    });
+
+    $('#clearPriceFilter').on('click', function() {
+        $('#minPrice').val('');
+        $('#maxPrice').val('');
+        filterProducts();
+    });
+
+    $('#clearBrandFilter').on('click', function() {
+        $('#brandFilter').val('');
+        filterProducts();
+    });
+
+    $('#clearProductNameFilter').on('click', function() {
+        $('#productName').val('');
+        filterProducts();
+    });
+
+    $('.color-swatch').on('click', function(e) {
+        e.preventDefault();
+        $(this).toggleClass('selected');
+        filterProducts(); 
+    });
+
+    $('#clearColorFilter').on('click', function() {
+        $('.color-swatch').removeClass('selected');
+
+        filterProducts();
+    });
+
+    filterProducts();
+});
+</script>
+
+{% endblock %}

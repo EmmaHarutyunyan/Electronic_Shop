@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+<link type="text/css" rel="stylesheet" href="{% static 'css/color.css' %}"/>
+
+<div id="breadcrumb" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb-tree">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">{{ product.pr_name }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img" style="height: 600px;"> <!-- Increased height -->
+                    <div class="product-preview" style="width: 100%; height: 100%;"> <!-- Set height to 100% -->
+                        <img id="main-image" src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-md-pull-5">
+                <div id="product-imgs">
+                    <div class="thumbs-container">
+                        <div class="thumbs-wrapper" style="display: flex; flex-wrap: wrap; gap: 15px;">
+                            {% for picture in pictures %}
+                                <div class="product-preview" style="width: 150px; height: 150px;">
+                                    <img class="thumb-image" src="{{ picture.pictures.url }}" data-main-image="{{ picture.pictures.url }}" alt="Thumbnail for {{ product.pr_name }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">{{ product.pr_name }}</h2>
+                    <div class="product-rating">
+                        {% for i in "12345" %}
+                            <i class="fa fa-star{% if forloop.counter > 4 %}-o{% endif %}"></i>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {% if product.category.category_name == "Accessories" %}
+                            <h4 class="product-price">${{ product.new_price }} <del class="product-old-price">${{ product.old_price }}</del></h4>
+                        {% else %}
+                            <h3 class="product-price"><span id="product-new-price">Not available</span></h3>
+                        {% endif %}
+                        <span class="product-available">In Stock</span>
+                    </div>
+                    <form method="post" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="hidden" name="price" id="hidden-price" value="{{ product.new_price }}">
+
+                        <div class="product-options">
+                            {% if product_details %}
+                                <div class="size-options">
+                                    <label for="size-select">Size:</label>
+                                    <select class="input-select" name="size" id="size-select" onchange="updatePrice()">
+                                        {% for detail in product_details %}
+                                            <option value="{{ detail.size.id }}" data-price="{{ detail.size.price }}">
+                                                {{ detail.size.size }} {{ detail.size.unit }}
+                                            </option>
+                                        {% empty %}
+                                            <option value="">No sizes available</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endif %}
+                            <div class="color-options">
+                                <label for="color-select">Color:</label>
+                                <ul class="color-list">
+                                    {% if colors %}
+                                        {% for color in colors %}
+                                            <li class="color-item">
+                                                <a href="#" 
+                                                   class="color-preview"
+                                                   data-color-code="{{ color.color_code }}"
+                                                   data-color-id="{{ color.id }}"
+                                                   data-product-url="{% url 'product_detail' color.product.id %}"
+                                                   title="{{ color.color_name }}">
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if other_colors %}
+                                        {% for color in other_colors %}
+                                            <li class="color-item">
+                                                <a href="#" 
+                                                   class="color-preview"
+                                                   data-color-code="{{ color.color_code }}"
+                                                   data-color-id="{{ color.id }}"
+                                                   data-product-url="{% url 'product_detail' color.product.id %}"
+                                                   title="{{ color.color_name }}">
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="add-to-cart">
+                            <button type="submit" class="add-to-cart-btn">
+                                <i class="fa fa-shopping-cart"></i> {% trans 'add to cart' %}
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="product-btns">
+                        <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="add_to_wishlist">
+                                <i class="fa fa-heart-o"></i> {% trans 'add to wishlist' %}
+                            </button>
+                        </form>
+                    </div>
+
+                    <ul class="product-links">
+                        <li>Category:</li>
+                        <li>{{ product.category.category_name }}</li>
+                    </ul>
+
+                    <div class="product-share">
+                        <span>Share:</span>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;src=sdkpreparse" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}&amp;text={{ product.pr_name }}" target="_blank"><i class="fa fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+                            <div class="tab-content">
+                                <div id="tab1" class="tab-pane fade in active">
+                                    <div class="text-center">
+                                        <h3 style="text-align: center;">Product Description</h3>
+                                    </div>
+                                    <div>
+                                        <p>{{ description.description|safe }}</p>
+                                        
+                                        <h4>Specifications</h4>
+                                        <ul>
+                                            {% if description.battery_life %}
+                                                <li><strong>Battery Life:</strong> {{ description.battery_life }}</li>
+                                            {% endif %}
+                                            {% if description.processor %}
+                                                <li><strong>Processor:</strong> {{ description.processor }}</li>
+                                            {% endif %}
+                                            {% if description.warranty %}
+                                                <li><strong>Warranty:</strong> {{ description.warranty }}</li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if product.category.category_name == "Accessories" %}
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Other Colors</h2>
+                        <div class="row">
+                            {% for related_product in related_products %}
+                                <div class="col-md-4">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="{{ related_product.pr_img.url }}" alt="{{ related_product.pr_name }}">
+                                        </div>
+                                        <div class="product-body">
+                                            <h3 class="product-name">{{ related_product.pr_name }}</h3>
+                                            <p class="product-category">{{ related_product.category.category_name }}</p>
+                                            {% if related_product.category.category_name == "Accessories" %}
+                                                <h4 class="product-price">${{ related_product.new_price }}</h4>
+                                            {% else %}
+                                                <h4 class="product-price">Price not available</h4>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-btns">
+                                            <a href="{% url 'product_detail' related_product.id %}" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/color_redirect.js' %}"></script>
+{% endblock %}

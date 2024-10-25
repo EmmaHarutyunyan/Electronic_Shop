@@ -1,0 +1,549 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="cookies-eu-banner">
+    <div class="cookie-text">
+        This site uses cookies to enhance user experience. See <a href="https://policies.google.com/privacy?hl=en-US" class="ml-1 text-decoration-none">Privacy policy</a>
+    </div>
+    <div class="button-container">
+        <button class="allow-button accept-btn" type="submit">Accept All</button>
+        <button class="allow-button" type="submit">Deny All</button>
+    </div>
+</div>
+
+<script>
+    const cookieBanner = document.querySelector('.cookies-eu-banner');
+    const acceptButton = document.querySelector('.accept-btn');
+    const denyButton = document.querySelector('.allow-button:not(.accept-btn)');
+
+    acceptButton.addEventListener('click', () => {
+        cookieBanner.style.display = 'none';
+        document.cookie = 'cookie_consent=accepted; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+    });
+
+    denyButton.addEventListener('click', () => {
+        cookieBanner.style.display = 'none';
+        document.cookie = 'cookie_consent=denied; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.section-tab-nav a').on('click', function(e) {
+            e.preventDefault();
+            var tabId = $(this).attr('href');
+            $(this).closest('.section').find('.tab-pane').removeClass('active');
+            $(tabId).addClass('active');
+        });
+    });
+</script>
+
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}
+                {% if category.id != 'all' %}
+                    <div class="col-md-4 col-xs-6 category-item">
+                        <div class="shop">
+                            <div class="shop-img">
+                                <img src="{{ category.category_img.url }}" alt="{{ category.category_name }}" class="img-fluid">
+                            </div>
+                            <div class="shop-body">
+                                <h3>{{ category.category_name }}</h3>
+                                <a href="{% url 'store' %}?category={{ category.id }}" class="cta-btn">{% trans 'Shop now' %}<i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">{% trans 'New Products' %}</h3>
+                    <div class="section-nav">
+                        <ul class="section-tab-nav tab-nav">
+                            <li class="active">
+                                <a data-toggle="tab" href="#new-products-all">{% trans 'All Products' %}</a>
+                            </li>
+                            {% for category in categories %}
+                            {% if category.id != 'all' %}
+                            <li>
+                                <a data-toggle="tab" href="#new-products-{{ category.id }}">{{ category.category_name }}</a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <div id="new-products-all" class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-new-products-all">
+                                {% for product in products %}
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}">
+                                            <div class="product-label">
+                                                <span class="sale">{{ product.discount }} {% trans ' %' %}</span>
+                                                {% if product.status == 'New' %}
+                                                <span class="new">{{ product.status }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">{{ product.category.category_name }}</p>
+                                            <h3 class="product-name"><a href="#">{{ product.pr_name }}</a></h3>
+                                            <h4 class="product-price">${{ product.new_price }} <del class="product-old-price">${{ product.old_price }}</del></h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="product-btns">
+                                                <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="add-to-wishlist" style="color: inherit; background-color: transparent; border: none;">
+                                                        <i class="fa fa-heart-o"></i><span class="tooltipp">{% trans 'Add to wishlist' %}</span>
+                                                    </button>
+                                                </form>
+                                                <button class="quick-view">
+                                                    <a href="{% url 'product_detail' product.id %}">
+                                                        <i class="fa fa-eye"></i>
+                                                        <span class="tooltipp">{% trans 'Quick view' %}</span>
+                                                    </a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <a href="{% url 'product_detail' product.id %}" class="add-to-cart-btn">
+                                                <i class="fa fa-shopping-cart"></i> {% trans 'Add to cart' %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div id="slick-nav-new-products-all" class="products-slick-nav"></div>
+                        </div>
+                        {% for category in categories %}
+                        {% if category.id != 'all' %}
+                        <div id="new-products-{{ category.id }}" class="tab-pane">
+                            <div class="products-slick" data-nav="#slick-nav-new-products-{{ category.id }}">
+                                {% for product in category.product_set.all %}
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}">
+                                            <div class="product-label">
+                                                <span class="sale">{{ product.discount }} {% trans ' %' %}</span>
+                                                {% if product.status == 'New' %}
+                                                <span class="new">{{ product.status }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">{{ category.category_name }}</p>
+                                            <h3 class="product-name"><a href="#">{{ product.pr_name }}</a></h3>
+                                            <h4 class="product-price">${{ product.new_price }} <del class="product-old-price">${{ product.old_price }}</del></h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="product-btns">
+                                                <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="add-to-wishlist" style="color: inherit; background-color: transparent; border: none;">
+                                                        <i class="fa fa-heart-o"></i><span class="tooltipp">{% trans 'Add to wishlist' %}</span>
+                                                    </button>
+                                                </form>
+                                                <button class="quick-view">
+                                                    <a href="{% url 'product_detail' product.id %}">
+                                                        <i class="fa fa-eye"></i>
+                                                        <span class="tooltipp">{% trans 'Quick view' %}</span>
+                                                    </a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <a href="{% url 'product_detail' product.id %}" class="add-to-cart-btn">
+                                                <i class="fa fa-shopping-cart"></i> {% trans 'Add to cart' %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div id="slick-nav-new-products-{{ category.id }}" class="products-slick-nav"></div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">{% trans 'New Products' %}</h3>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="products-slick-horizontal" id="slick-new-products-horizontal">
+                    {% for product in products %}
+                    <div class="product-item">
+                        <a href="{% url 'product_detail' product.id %}" class="product-link">
+                            <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}">
+                            <h3>{{ product.pr_name }}</h3>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="slideshow-container">
+                    {% for slide in slide %}
+                    <div class="slide">
+                        <img src="{{ slide.image.url }}" alt="{{ slide.alt_text }}" class="slide-image">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="hot-deal" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="hot-deal">
+                    <ul id="countdown" class="hot-deal-countdown">
+                        <li>
+                            <div>
+                                <h3 id="days">00</h3>
+                                <span>{% trans 'Days' %}</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3 id="hours">00</h3>
+                                <span>{% trans 'Hours' %}</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3 id="minutes">00</h3>
+                                <span>{% trans 'Min' %}</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3 id="seconds">00</h3>
+                                <span>{% trans 'Sec' %}</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2 class="text-uppercase">{{ hot_deal.title }}</h2>
+                    <p>{{ hot_deal.description }}</p>
+                    <a class="primary-btn cta-btn" href="#">{% trans 'Shop now' %}</a>
+                </div>
+                    <script>
+                        var countDownDate = new Date("Nov 22, 2024 15:37:25").getTime();
+                        var x = setInterval(function() {
+                            var now = new Date().getTime();
+                            var distance = countDownDate - now;
+                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                            document.getElementById("days").innerHTML = days;
+                            document.getElementById("hours").innerHTML = hours;
+                            document.getElementById("minutes").innerHTML = minutes;
+                            document.getElementById("seconds").innerHTML = seconds;
+                            if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById("days").innerHTML = "00";
+                                document.getElementById("hours").innerHTML = "00";
+                                document.getElementById("minutes").innerHTML = "00";
+                                document.getElementById("seconds").innerHTML = "00";
+                            }
+                        }, 1000);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="video-item">
+                        <a href="{{ videos.0.video_url }}" target="_blank">
+                            <h4>{{ videos.0.video_title }}</h4>
+                        </a>
+                        <video width="640" height="480" controls autoplay muted>
+                            <source src="{{ videos.0.video_url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="video-item">
+                        <a href="{{ videos.1.video_url }}" target="_blank">
+                            <h4>{{ videos.1.video_title }}</h4>
+                        </a>
+                        <video width="640" height="480" controls autoplay muted>
+                            <source src="{{ videos.1.video_url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">{% trans 'Top Selling' %}</h3>
+                    <div class="section-nav">
+                        <ul class="section-tab-nav tab-nav">
+                            <li class="active">
+                                <a data-toggle="tab" href="#top-selling-all">{% trans 'All Products' %}</a>
+                            </li>
+                            {% for category in categories %}
+                                {% if category.id != 'all' %}
+                                    <li>
+                                        <a data-toggle="tab" href="#top-selling-{{ category.id }}">{{ category.category_name }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <div id="top-selling-all" class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-top-selling-all">
+                                {% for product in top_selling_products %}
+                                    <div class="col-md-4 col-xs-6">
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}">
+                                                <div class="product-label">
+                                                    <span class="sale">{{ product.discount }} %</span>
+                                                    {% if product.status == 'New' %}
+                                                        <span class="new">{{ product.status }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">{{ product.category.category_name }}</p>
+                                                <h3 class="product-name"><a href="#">{{ product.pr_name }}</a></h3>
+                                                <h4 class="product-price">${{ product.new_price }} <del class="product-old-price">${{ product.old_price }}</del></h4>
+                                                <div class="product-rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="product-btns">
+                                                    <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="add-to-wishlist" style="color: inherit; background-color: transparent; border: none;">
+                                                            <i class="fa fa-heart-o"></i><span class="tooltipp">{% trans 'add to wishlist' %}</span>
+                                                        </button>
+                                                    </form>
+                                                    <button class="quick-view">
+                                                        <a href="{% url 'product_detail' product.id %}">
+                                                            <i class="fa fa-eye"></i>
+                                                            <span class="tooltipp">{% trans 'quick view' %}</span>
+                                                        </a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <a href="{% url 'product_detail' product.id %}" class="add-to-cart-btn">
+                                                    <i class="fa fa-shopping-cart"></i> {% trans 'Add to cart' %}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div id="slick-nav-top-selling-all" class="products-slick-nav"></div>
+                        </div>
+                        {% for category in categories %}
+                            {% if category.id != 'all' %}
+                                <div id="top-selling-{{ category.id }}" class="tab-pane">
+                                    <div class="products-slick" data-nav="#slick-nav-top-selling-{{ category.id }}">
+                                        {% for product in category.product_set.all %}
+                                            <div class="col-md-4 col-xs-6">
+                                                <div class="product">
+                                                    <div class="product-img">
+                                                        <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}">
+                                                        <div class="product-label">
+                                                            <span class="sale">{{ product.discount }} %</span>
+                                                            {% if product.status == 'New' %}
+                                                                <span class="new">{{ product.status }}</span>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <p class="product-category">{{ category.category_name }}</p>
+                                                        <h3 class="product-name"><a href="#">{{ product.pr_name }}</a></h3>
+                                                        <h4 class="product-price">${{ product.new_price }} <del class="product-old-price">${{ product.old_price }}</del></h4>
+                                                        <div class="product-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="product-btns">
+                                                            <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                                                {% csrf_token %}
+                                                                <button type="submit" class="add-to-wishlist" style="color: inherit; background-color: transparent; border: none;">
+                                                                    <i class="fa fa-heart-o"></i><span class="tooltipp">{% trans 'add to wishlist' %}</span>
+                                                                </button>
+                                                            </form>
+                                                            <button class="quick-view">
+                                                                <a href="{% url 'product_detail' product.id %}">
+                                                                    <i class="fa fa-eye"></i>
+                                                                    <span class="tooltipp">{% trans 'quick view' %}</span>
+                                                                </a>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add-to-cart">
+                                                        <a href="{% url 'product_detail' product.id %}" class="add-to-cart-btn">
+                                                            <i class="fa fa-shopping-cart"></i> {% trans 'Add to cart' %}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div id="slick-nav-top-selling-{{ category.id }}" class="products-slick-nav"></div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <h3 class="title">{% trans 'Top Selling' %}</h3>
+        <div class="category-sliders-container">
+            {% for category in categories %}
+                {% if category.id != 'all' %}
+                <div class="category-slider" data-category="{{ category.id }}">
+                    <h4>{{ category.category_name }}</h4>
+                    <div class="products-slider slick-slider">
+                        {% for product in category.product_set.all %}
+                        <div class="product-item">
+                            <a href="{% url 'product_detail' product.id %}" class="product-link">
+                                <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}">
+                                <h3>{{ product.pr_name }}</h3>
+                                <p>${{ product.new_price }}</p>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                </div>
+            </div>
+            <div class="row video-row">
+                <div class="col-md-6">
+                    <div class="video-item">
+                        <a href="{{ videos.2.video_url }}" target="_blank">
+                            <h4>{{ videos.2.video_title }}</h4>
+                        </a>
+                        <video controls autoplay muted>
+                            <source src="{{ videos.2.video_url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="video-item">
+                        <a href="{{ videos.3.video_url }}" target="_blank">
+                            <h4>{{ videos.3.video_title }}</h4>
+                        </a>
+                        <video controls autoplay muted>
+                            <source src="{{ videos.3.video_url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        $('.slideshow-container').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
+            dots: true,
+            arrows: true
+        });
+    });
+</script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <ul>
+        {% for product in accessories %}
+            <li>
+                <a href="{% url 'product_detail' product.id %}">
+                    <div id="breadcrumb" class="section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="breadcrumb-tree">
+                                        <li><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+                                        <li class="active">{{ product.pr_name }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div id="product-main-img">
+                                        <div class="product-preview">
+                                            <img src="{{ product.pr_img.url }}" alt="{{ product.pr_name }}" width="300" height="300">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="product-details">
+                                        <h2 class="product-name">{{ product.pr_name }}</h2>
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        <h3 class="product-price">${{ product.new_price }}</h3>
+                                        <div class="product-description">
+                                            <p>{{ product.description }}</p>
+                                            <a href="{% url 'product_detail' product.id %}" class="product-btn about-product">
+                                                {% trans 'About Product' %}
+                                            </a>
+                                            <a href="{% url 'add_to_wishlist' product.id %}" class="product-btn add-to-wishlist">
+                                                {% trans 'Add to Wishlist' %}
+                                            </a>
+                                        </div>
+                                        <ul class="product-info">
+                                            <li class="product-info-item">{% trans 'Category' %}:</li>
+                                            <li class="product-info-item">{{ product.category.category_name }}</li>
+                                        </ul>
+
+                                        <div class="product-share">
+                                            <span>{% trans 'Share' %}:</span>
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;src=sdkpreparse" target="_blank"><i class="fa fa-facebook"></i></a>
+                                            <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}&amp;text={{ product.pr_name }}" target="_blank"><i class="fa fa-telegram"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

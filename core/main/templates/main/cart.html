@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h2>{% trans 'Your Shopping Cart' %}</h2>
+
+    {% if cart_items %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Size</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.pr_name }}</td>
+                    <td>
+                        {% if item.size %}
+                            {{ item.size.size }} {{ item.size.unit }}
+                        {% else %}
+                            None
+                        {% endif %}
+                    </td>
+                    <td>
+                        <img src="{{ item.product.pr_img.url }}" alt="{{ item.product.pr_name }}" width="135" height="130">
+                    </td>
+                    <td class="quantity-cell">
+                        <form action="{% url 'update_cart' item.product.id %}" method="post" class="quantity-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="size" value="{{ item.size.id }}">
+                            <input type="hidden" name="action" value="decrement">
+                            <button type="submit" class="quantity-button quantity-decrement">-</button>
+                        </form>
+                        <span class="quantity-text">{{ item.quantity }}</span>
+                        <form action="{% url 'update_cart' item.product.id %}" method="post" class="quantity-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="size" value="{{ item.size.id }}">
+                            <input type="hidden" name="action" value="increment">
+                            <button type="submit" class="quantity-button quantity-increment">+</button>
+                        </form>
+                    </td>
+                    <td>${{ item.price }}</td>
+                    <td>${{ item.item_total }}</td>
+                    <td>
+                        <form action="{% url 'delete_from_cart' item.product.id %}" method="post" class="delete-form">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger" onclick="return confirmDelete();">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="cart-content">
+            {% if total_quantity > 0 %}
+                <p>Total Quantity: {{ total_quantity }}</p>
+                <p>Total Amount: ${{ total_amount }}</p>
+                <a href="{% url 'index' %}" class="button">Add new product</a>
+                <a href="{% url 'checkout' %}" class="button">Proceed to Checkout</a>
+            {% else %}
+                <p>Your cart is empty.</p>
+                <a href="{% url 'index' %}" class="btn btn-primary">Go to Home</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>Your cart is empty.</p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Go to Home</a>
+    {% endif %}
+</div>
+<script>
+function confirmDelete() {
+    return confirm("Are you sure you want to delete this product from your cart?");
+}
+</script>
+{% endblock %}

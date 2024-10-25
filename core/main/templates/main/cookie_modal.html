@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<div id="cookieModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans 'We value your privacy' %}</h5>
+            </div>
+            <div class="modal-body">
+                <p>{% trans 'We use cookies on this website to enhance your user experience. By clicking "I agree", you are giving your consent for us to set cookies.' %}</p>
+                <p>{% trans 'For more information on what data is contained in the cookies, please see our' %} <a href="/privacy-policy/">{% trans 'Privacy Policy' %}</a> {% trans 'page.' %}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="rejectCookies">{% trans 'I decline' %}</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="acceptCookies">{% trans 'I agree' %}</button>
+            </div>
+        </div>
+    </div>
+</div>

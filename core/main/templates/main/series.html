@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="series-products">
+    <h1>Products in the {{ selected_series }} Series</h1>
+    <ul>
+        {% for detail in products_in_series %}
+        <li>
+            <a href="{% url 'product_detail' detail.product.id %}">
+                <img src="{{ detail.color_image.url }}" alt="{{ detail.product.pr_name }}">
+                <span>{{ detail.product.pr_name }} - {{ detail.color }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

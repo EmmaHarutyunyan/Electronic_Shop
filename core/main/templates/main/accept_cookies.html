@@ -1,0 +1,28 @@
+{extends 'base.html'}
+{% load static %}
+
+{% block content %}
+
+<div class="cookie-banner">
+    <p>This website uses cookies to improve your experience. By continuing to use this site, you accept our use of cookies.</p>
+    <button class="btn btn-primary" id="accept-cookies">Accept All Cookies</button>
+</div>
+
+<script>
+    document.getElementById("accept-cookies").addEventListener("click", function() {
+        fetch("{% url 'accept_cookies' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Cookies accepted!");
+            document.querySelector(".cookie-banner").style.display = "none";
+        })
+        .catch(error => console.error("Error accepting cookies:", error));
+    });
+</script>
+
+{% endblock %}

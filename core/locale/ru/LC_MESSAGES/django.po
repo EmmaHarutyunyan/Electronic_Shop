@@ -1,0 +1,468 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-28 20:09+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+#: .\core\settings.py:218
+msgid "Armenian"
+msgstr "Армянский"
+
+#: .\core\settings.py:219
+msgid "Russia"
+msgstr "Россия"
+
+#: .\core\settings.py:220
+msgid "English"
+msgstr "Английский"
+
+#: .\main\apps.py:12
+msgid "cookie consent"
+msgstr "Согласие на использование cookies"
+
+#: .\main\models.py:229
+msgid ""
+"Enter a valid 'varname' consisting of letters, numbers, underscores or "
+"hyphens."
+msgstr ""
+"Введите допустимое 'varname', состоящее из букв, цифр, подчеркиваний или "
+"дефисов."
+
+#: .\main\models.py:274
+msgid "Variable name"
+msgstr "Имя переменной"
+
+#: .\main\models.py:279 .\main\models.py:343
+msgid "Name"
+msgstr "Название"
+
+#: .\main\models.py:280 .\main\models.py:344
+msgid "Description"
+msgstr "Описание"
+
+#: .\main\models.py:282
+msgid "Is required"
+msgstr "Обязательно"
+
+#: .\main\models.py:283
+msgid "Are cookies in this group required."
+msgstr "Необходимы ли cookies в этой группе."
+
+#: .\main\models.py:287
+msgid "Is deletable?"
+msgstr "Можно ли удалить?"
+
+#: .\main\models.py:288
+msgid "Can cookies in this group be deleted."
+msgstr "Можно ли удалить cookies в этой группе."
+
+#: .\main\models.py:291
+msgid "Ordering"
+msgstr "Порядок"
+
+#: .\main\models.py:292 .\main\models.py:347 .\main\models.py:401
+msgid "Created"
+msgstr "Создано"
+
+#: .\main\models.py:297
+msgid "Cookie Group"
+msgstr "Группа cookies"
+
+#: .\main\models.py:298
+msgid "Cookie Groups"
+msgstr "Группы cookies"
+
+#: .\main\models.py:345
+msgid "Path"
+msgstr "Путь"
+
+#: .\main\models.py:346
+msgid "Domain"
+msgstr "Домен"
+
+#: .\main\models.py:352
+msgid "Cookie"
+msgstr "Cookie"
+
+#: .\main\models.py:353
+msgid "Cookies"
+msgstr "Cookies"
+
+#: .\main\models.py:388 .\main\templates\cookie_consent\_cookie_group.html:24
+msgid "Declined"
+msgstr "Отклонено"
+
+#: .\main\models.py:389 .\main\templates\cookie_consent\_cookie_group.html:15
+msgid "Accepted"
+msgstr "Принято"
+
+#: .\main\models.py:394 .\main\templates\main\cart.html:17
+msgid "Action"
+msgstr "Действие"
+
+#: .\main\models.py:400
+msgid "Version"
+msgstr "Версия"
+
+#: .\main\models.py:407
+msgid "Log item"
+msgstr "Запись"
+
+#: .\main\models.py:408
+msgid "Log items"
+msgstr "Записи"
+
+#: .\main\templates\cookie_consent\_cookie_group.html:19
+msgid "Accept"
+msgstr "Принять"
+
+#: .\main\templates\cookie_consent\_cookie_group.html:28
+msgid "Decline"
+msgstr "Отклонить"
+
+#: .\main\templates\main\accessory.html:79
+msgid "Add to Cart"
+msgstr "Добавить в корзину"
+
+#: .\main\templates\main\all_accessories.html:15
+#: .\main\templates\main\all_products.html:17
+#: .\main\templates\main\checkout.html:16
+msgid "Home"
+msgstr "Главная"
+
+#: .\main\templates\main\all_accessories.html:48
+#: .\main\templates\main\all_products.html:87
+msgid "About Product"
+msgstr "О продукте"
+
+#: .\main\templates\main\all_accessories.html:51
+#: .\main\templates\main\all_products.html:90
+msgid "Add to Wishlist"
+msgstr "Добавить в список желаемого"
+
+#: .\main\templates\main\all_accessories.html:55
+#: .\main\templates\main\all_products.html:94
+msgid "Category"
+msgstr "Категория"
+
+#: .\main\templates\main\all_accessories.html:60
+#: .\main\templates\main\all_products.html:99
+msgid "Share"
+msgstr "Поделиться"
+
+#: .\main\templates\main\all_products.html:63
+msgid "Product Thumbnail"
+msgstr "Миниатюра продукта"
+
+#: .\main\templates\main\all_products.html:83
+msgid "In Stock"
+msgstr "В наличии"
+
+#: .\main\templates\main\cart.html:6
+msgid "Your Shopping Cart"
+msgstr "Ваша корзина"
+
+#: .\main\templates\main\cart.html:12
+msgid "Product"
+msgstr "Продукт"
+
+#: .\main\templates\main\cart.html:13
+msgid "Image"
+msgstr "Изображение"
+
+#: .\main\templates\main\cart.html:14
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\main\templates\main\cart.html:15
+msgid "Price"
+msgstr "Цена"
+
+#: .\main\templates\main\cart.html:16
+msgid "Total"
+msgstr "Итого"
+
+#: .\main\templates\main\cart.html:42
+msgid "Decrease Quantity"
+msgstr "Уменьшить количество"
+
+#: .\main\templates\main\cart.html:48
+msgid "Increase Quantity"
+msgstr "Увеличить количество"
+
+#: .\main\templates\main\cart.html:64
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\main\templates\main\cart.html:73
+msgid "Total Quantity"
+msgstr "Общее количество"
+
+#: .\main\templates\main\cart.html:74
+msgid "Total Amount"
+msgstr "Общая сумма"
+
+#: .\main\templates\main\cart.html:75
+msgid "Add new product"
+msgstr "Добавить новый продукт"
+
+#: .\main\templates\main\cart.html:76
+msgid "Proceed to Checkout"
+msgstr "Перейти к оформлению заказа"
+
+#: .\main\templates\main\cart.html:77
+msgid "Pay Now!"
+msgstr "Оплатить сейчас!"
+
+#: .\main\templates\main\cart.html:79 .\main\templates\main\cart.html:84
+msgid "Your cart is empty."
+msgstr "Ваша корзина пуста."
+
+#: .\main\templates\main\cart.html:80 .\main\templates\main\cart.html:85
+msgid "Go to Home"
+msgstr "На главную"
+
+#: .\main\templates\main\checkout.html:14
+#: .\main\templates\main\checkout.html:17
+msgid "Checkout"
+msgstr "Оформление заказа"
+
+#: .\main\templates\main\checkout.html:38
+msgid "Billing address"
+msgstr "Адрес для выставления счета"
+
+#: .\main\templates\main\checkout.html:41
+#: .\main\templates\main\checkout.html:94
+msgid "First Name"
+msgstr "Имя"
+
+#: .\main\templates\main\checkout.html:44
+#: .\main\templates\main\checkout.html:97
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\main\templates\main\checkout.html:47
+#: .\main\templates\main\checkout.html:100
+msgid "Email"
+msgstr "Электронная почта"
+
+#: .\main\templates\main\checkout.html:50
+#: .\main\templates\main\checkout.html:103
+msgid "Address"
+msgstr "Адрес"
+
+#: .\main\templates\main\checkout.html:53
+#: .\main\templates\main\checkout.html:106
+msgid "City"
+msgstr "Город"
+
+#: .\main\templates\main\checkout.html:56
+#: .\main\templates\main\checkout.html:109
+msgid "Country"
+msgstr "Страна"
+
+#: .\main\templates\main\checkout.html:59
+#: .\main\templates\main\checkout.html:112
+msgid "ZIP Code"
+msgstr "Индекс"
+
+#: .\main\templates\main\checkout.html:62
+#: .\main\templates\main\checkout.html:115
+msgid "Telephone"
+msgstr "Телефон"
+
+#: .\main\templates\main\checkout.html:69
+msgid "Create Account?"
+msgstr "Создать аккаунт?"
+
+#: .\main\templates\main\checkout.html:72
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt."
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt."
+
+#: .\main\templates\main\checkout.html:73
+msgid "Enter Your Password"
+msgstr "Введите ваш пароль"
+
+#: .\main\templates\main\checkout.html:83
+msgid "Shipping address"
+msgstr "Адрес доставки"
+
+#: .\main\templates\main\checkout.html:89
+msgid "Ship to a different address?"
+msgstr "Доставить на другой адрес?"
+
+#: .\main\templates\main\checkout.html:124
+msgid "Order Notes"
+msgstr "Примечания к заказу"
+
+#: .\main\templates\main\checkout.html:132
+msgid "Your Order"
+msgstr "Ваш заказ"
+
+#: .\main\templates\main\checkout.html:136
+#: .\main\templates\main\checkout.html:145
+msgid "PRODUCT QUANTITY"
+msgstr "КОЛИЧЕСТВО ПРОДУКТОВ"
+
+#: .\main\templates\main\checkout.html:137
+#: .\main\templates\main\checkout.html:154
+msgid "TOTAL"
+msgstr "ИТОГО"
+
+#: .\main\templates\main\checkout.html:150
+msgid "Shipping"
+msgstr "Доставка"
+
+#: .\main\templates\main\checkout.html:151
+msgid "FREE"
+msgstr "БЕСПЛАТНО"
+
+#: .\main\templates\main\checkout.html:163
+msgid "Direct Bank Transfer"
+msgstr "Прямой банковский перевод"
+
+#: .\main\templates\main\checkout.html:166
+#: .\main\templates\main\checkout.html:176
+#: .\main\templates\main\checkout.html:186
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt ut labore et dolore magna aliqua."
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt ut labore et dolore magna aliqua."
+
+#: .\main\templates\main\checkout.html:173
+msgid "Cheque Payment"
+msgstr "Оплата чеком"
+
+#: .\main\templates\main\checkout.html:183
+msgid "Paypal System"
+msgstr "Система Paypal"
+
+#: .\main\templates\main\checkout.html:194
+msgid "I\\"
+msgstr "Я\\"
+
+#: .\main\templates\main\checkout.html:194
+msgid "terms & conditions"
+msgstr "условия"
+
+#: .\main\templates\main\checkout.html:197
+msgid "Place order"
+msgstr "Разместить заказ"
+
+#: .\main\templates\main\cookie_modal.html:7
+msgid "We value your privacy"
+msgstr "Мы ценим вашу конфиденциальность"
+
+#: .\main\templates\main\cookie_modal.html:10
+msgid ""
+"We use cookies on this website to enhance your user experience. By clicking "
+"\"I agree\", you are giving your consent for us to set cookies."
+msgstr ""
+"Мы используем cookies на этом сайте для улучшения вашего пользовательского "
+"опыта. Нажимая \"Я согласен\", вы даете свое согласие на использование cookies."
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid ""
+"For more information on what data is contained in the cookies, please see our"
+msgstr ""
+"Для получения дополнительной информации о том, какие данные содержатся в "
+"cookies, пожалуйста, ознакомьтесь с нашей"
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
+
+#: .\main\templates\main\cookie_modal.html:11
+msgid "page."
+msgstr "страница."
+
+#: .\main\templates\main\cookie_modal.html:14
+msgid "I decline"
+msgstr "Я отказываюсь"
+
+#: .\main\templates\main\cookie_modal.html:15
+msgid "I agree"
+msgstr "Я согласен"
+
+#: .\main\templates\main\index.html:64 .\main\templates\main\index.html:300
+msgid "Shop now"
+msgstr "Купить сейчас"
+
+#: .\main\templates\main\index.html:81 .\main\templates\main\index.html:227
+msgid "New Products"
+msgstr "Новые продукты"
+
+#: .\main\templates\main\index.html:85 .\main\templates\main\index.html:384
+msgid "All Products"
+msgstr "Все продукты"
+
+#: .\main\templates\main\index.html:109 .\main\templates\main\index.html:166
+#, python-format
+msgid " %%"
+msgstr " %%"
+
+#: .\main\templates\main\index.html:130 .\main\templates\main\index.html:187
+msgid "Add to wishlist"
+msgstr "Добавить в список желаемого"
+
+#: .\main\templates\main\index.html:136 .\main\templates\main\index.html:193
+msgid "Quick view"
+msgstr "Быстрый просмотр"
+
+#: .\main\templates\main\index.html:146 .\main\templates\main\index.html:203
+msgid "Add to cart"
+msgstr "Добавить в корзину"
+
+#: .\main\templates\main\index.html:276
+msgid "Days"
+msgstr "Дни"
+
+#: .\main\templates\main\index.html:282
+msgid "Hours"
+msgstr "Часы"
+
+#: .\main\templates\main\index.html:288
+msgid "Min"
+msgstr "Мин"
+
+#: .\main\templates\main\index.html:294
+msgid "Sec"
+msgstr "Сек"
+
+#: .\main\templates\main\index.html:380 .\main\templates\main\index.html:522
+msgid "Top Selling"
+msgstr "Топ-продаж"
+
+#: .\main\templates\main\index.html:429 .\main\templates\main\index.html:486
+msgid "add to wishlist"
+msgstr "добавить в список желаемого"
+
+#: .\main\templates\main\index.html:435 .\main\templates\main\index.html:492
+msgid "quick view"
+msgstr "быстрый просмотр"
+
+#: .\main\templates\main\index.html:445 .\main\templates\main\index.html:502
+#: .\main\templates\main\product.html:96
+msgid "add to cart"
+msgstr "добавить в корзину"

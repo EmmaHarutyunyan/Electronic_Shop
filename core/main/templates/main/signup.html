@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Sign Up</h1>
+    </div>
+    
+    <div class="main-content">
+        <p>You are about to sign in using a third-party account from Google.</p>
+        <p>Click below to continue.</p>
+        
+        <a href="{% provider_login_url 'google' %}?next=/">
+            <button class="google-button">Sign In Via Google</button>
+        </a>
+        
+        <p class="back-to-home">
+            <a href="{% url 'index' %}">Back to Home</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

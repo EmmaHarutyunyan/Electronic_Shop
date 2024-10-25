@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+<div id="breadcrumb" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb-tree">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">{{ product.pr_name }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img">
+                    <div class="product-preview">
+                        <img id="main-image" src="{{ product.pr_img.url }}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-md-pull-5">
+                <div id="product-imgs">
+                    <div class="thumbs-container">
+                        <div class="thumbs-wrapper">
+                            {% for picture in pictures %}
+                                <div class="product-preview">
+                                    <img class="thumb-image" src="{{ picture.pictures.url }}" data-main-image="{{ picture.pictures.url }}" alt="Product Thumbnail">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">{{ product.pr_name }}</h2>
+                    <div>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Product Price -->
+                        <h3 class="product-price">
+                            <span id="product-new-price">{{ product.new_price }}</span>
+                        </h3>
+                        <span class="product-available">In Stock</span>
+                    </div>
+                    <form method="post" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="hidden" name="price" id="hidden-price" value="{{ product.new_price }}">
+                        
+                        <div class="product-options">
+                            <div class="size-options">
+                                <label for="size-select">Size:</label>
+                                <select class="input-select" name="size" id="size-select" onchange="updatePrice()">
+                                    {% for detail in product_details %}
+                                        <option value="{{ detail.size.id }}" data-price="{{ detail.size.price }}">
+                                            {{ detail.size.size }} {{ detail.size.unit }}
+                                        </option>
+                                    {% empty %}
+                                        <option value="">No sizes available</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <ul class="color-list">
+                                {% if colors %}
+                                    {% for color in colors %}
+                                        <li class="color-item">
+                                            <a href="{% url 'product_detail' color.product.id %}?color={{ color.color_code }}" 
+                                               class="color-preview" 
+                                               data-color="{{ color.color_code }}"
+                                               data-image-url="{{ color.image_url }}"
+                                               data-thumb-images="{{ color.thumbnail_images|safe }}"
+                                               title="{{ color.color_name }}"
+                                               style="background-color: {{ color.color_code }};"> 
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>No color options available.</li>
+                                {% endif %}
+                            </ul>
+                        <div class="add-to-cart">
+                            <button type="submit" class="add-to-cart-btn">
+                                <i class="fa fa-shopping-cart"></i> {% trans 'add to cart' %}
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="product-btns">
+                        <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="add_to_wishlist">
+                                <i class="fa fa-heart-o">ADD TO WISHLIST</i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <ul class="product-links">
+                        <li>Category:</li>
+                        <li>{{ product.category }}</li>
+                    </ul>
+                    
+                    <div class="product-share">
+                        <span>Share:</span>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;src=sdkpreparse" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}&amp;text={{ product.pr_name }}" target="_blank"><i class="fa fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="product-tab">
+                    <ul class="tab-nav">
+                        <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
+                    </ul>
+
+<div class="tab-content">
+    <div id="tab1" class="tab-pane fade in active">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Product Description</h3>
+                <p>{{ description.description|safe }}</p> 
+
+                <h4>Additional Details</h4>
+                <ul>
+                    {% if description.battery_life %}
+                        <li><strong>Battery Life:</strong> {{ description.battery_life }}</li>
+                    {% endif %}
+                    {% if description.processor %}
+                        <li><strong>Processor:</strong> {{ description.processor }}</li>
+                    {% endif %}
+                    {% if description.warranty %}
+                        <li><strong>Warranty:</strong> {{ description.warranty }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.color-preview').forEach(function(preview) {
+            preview.addEventListener('click', function(event) {
+                event.preventDefault();
+                const colorCode = this.getAttribute('data-color');
+                const imageUrl = this.getAttribute('data-image-url');
+                const thumbImages = JSON.parse(this.getAttribute('data-thumb-images'));
+    
+                document.getElementById('main-image').src = imageUrl;
+    
+                const thumbsContainer = document.querySelector('.thumbs-container .thumbs-wrapper');
+                thumbsContainer.innerHTML = ''; 
+                thumbImages.forEach(function(thumbImage) {
+                    const imgElement = document.createElement('img');
+                    imgElement.classList.add('thumb-image');
+                    imgElement.src = thumbImage;
+                    imgElement.dataset.mainImage = thumbImage;
+                    imgElement.alt = 'Product Thumbnail';
+                    thumbsContainer.appendChild(imgElement);
+                });
+    
+                window.location.href = this.getAttribute('href');
+            });
+        });
+    });
+    </script>
