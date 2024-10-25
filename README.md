@@ -35,4 +35,15 @@ pip install -r requirements.txt
 ```bash
 python manage.py runserver
 ```
+
+
 https://github.com/user-attachments/assets/834d2331-a64c-40dc-b517-c458cc0217c3
+
+
+https://github.com/user-attachments/assets/423081c6-51fd-43a5-91fc-63d5c65ddb19
+
+
+https://github.com/user-attachments/assets/91ca7998-5956-4903-a3b8-fb4d36a157ed
+
+
+https://github.com/user-attachments/assets/37e7a9cc-9cb7-4bea-ba75-165e5b3805e6
