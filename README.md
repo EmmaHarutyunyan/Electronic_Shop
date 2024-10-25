@@ -36,7 +36,11 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+---
 **Here are some page videos down**
+---
+
+
 
 https://github.com/user-attachments/assets/834d2331-a64c-40dc-b517-c458cc0217c3
 
